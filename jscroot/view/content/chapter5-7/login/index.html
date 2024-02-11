@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Double Slider Login and Registration Form</title>
+  <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../login/style.css">
+</head>
+<body>
+  <div class="container" id="container">
+
+    <div class="form-container register-container">
+      <form id="signupForm">
+        <div>INI REGISTER FORM</div>
+        <div class="field">
+          <div class="control">
+            <input id="usernamesignup" class="input is-medium is-rounded" type="username" placeholder="hello@example.com" autocomplete="username" required />
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <input id="passwordsignup" class="input is-medium is-rounded" type="password" placeholder="**********" autocomplete="current-password" required />
+          </div>
+        </div>
+        <br />
+        <button class="button is-block is-fullwidth is-primary is-medium is-rounded" type="submit">
+          Signup
+        </button>
+      </form>
+      <script src="../login/js/register.js"></script>
+    </div>
+
+    <div class="form-container login-container">
+      
+      <form id="login-form">
+        <div>INI LOGIN FORM</div>
+        <div class="field">
+            <div class="control">
+                <input id="usernamelogin" class="input is-medium is-rounded" type="text" placeholder="hello@example.com" autocomplete="username" required />
+            </div>
+        </div>
+        <div class="field">
+            <div class="control">
+                <input id="passwordlogin" class="input is-medium is-rounded" type="password" placeholder="**********" autocomplete="current-password" required />
+            </div>
+        </div>
+        <br />
+        <p id="message"></p>
+        <button class="button is-block is-fullwidth is-primary is-medium is-rounded" type="submit">
+            Login
+        </button>
+    </form>
+      <script src="../login/js/login.js"></script>
+    </div>
+
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h1 class="title">Hello, <br> Welcome Back Again!!</h1>
+          <p>if you have an account, login here and have fun</p>
+          <button class="ghost" id="login">Login
+            <i class="lni lni-arrow-left login"></i>
+          </button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h1 class="title">Start Your <br> Journey Now</h1>
+          <p>if you don't have an account yet, join us and start your journey.</p>
+          <button class="ghost" id="register">Register
+            <i class="lni lni-arrow-right register"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../login/script.js"></script>
+  <script src="../login/js/login.js"></script>
+  <script src="../login/js/register.js"></script>
+
+</body>
+</html>

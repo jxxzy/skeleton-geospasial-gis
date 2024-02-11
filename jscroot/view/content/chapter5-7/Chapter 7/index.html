@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat WhatsApp Dzikri</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .whatsapp-button {
+            padding: 12px 24px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #25D366;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+
+        .external-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .external-link {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .external-link:hover {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Click the button to open WhatsApp chat And Sharelock</h1>
+        <a href="javascript:void(0);" onclick="openWhatsApp()" class="whatsapp-button">Open WhatsApp</a>
+    </div>
+
+    <div class="external-links">
+        <a href="https://medium.com/@izzatulhaq8/whatsauth-free-2fa-otp-notif-whatsapp-gateway-api-gratis-90be1b2ef015" target="_blank" class="external-link">Medium Article</a>
+    </div>
+
+    <script>
+        function openWhatsApp() {
+            // Replace the phone number with your desired WhatsApp number
+            var phoneNumber = '6285724361416';
+
+            // Create the WhatsApp URL
+            var whatsappURL = 'https://wa.me/' + phoneNumber;
+
+            // Open WhatsApp in a new tab or window
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+
+</body>
+</html>
