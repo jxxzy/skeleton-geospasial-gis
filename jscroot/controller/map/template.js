@@ -1,4 +1,4 @@
-export let xxx = "gisgetjson";
+export let xxx = "https://asia-southeast2-marjuniati-putri.cloudfunctions.net/backend";
 export let aaa = "gispostpoint";
 export let bbb = "gispostlinestring";
 export let ccc = "gitpostpolygon";
