@@ -1,8 +1,8 @@
-export let URLGeoJson = "https://us-central1-vivid-vent-401501.cloudfunctions.net/function-2";
-export let urlPostGCF = "https://asia-southeast2-vivid-vent-401501.cloudfunctions.net/test-post";
-export let tableTag="tr";
-export let tableRowClass="content is-small";
-export let tableTemplate=`
+export let URLGeoJson = "https://asia-southeast2-marjuniati-putri.cloudfunctions.net/josua";
+export let urlPostGCF = "https://asia-southeast2-marjuniati-putri.cloudfunctions.net/backend";
+export let tableTag = "tr";
+export let tableRowClass = "content is-small";
+export let tableTemplate = `
 <td>#NAME#</td>
 <td >#KORDINAT#</td>
 <td>#TYPE#</td>

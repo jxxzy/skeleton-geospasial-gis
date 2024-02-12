@@ -4,7 +4,7 @@ const hasil = document.getElementById('hasil');
 // Fungsi untuk mengambil data dari API
 async function ambilDataDariAPI() {
     try {
-        const response = await fetch('https://us-central1-vivid-vent-401501.cloudfunctions.net/function-1');
+        const response = await fetch('https://asia-southeast2-marjuniati-putri.cloudfunctions.net/josua');
         const data = await response.text(); // Menggunakan response.text() untuk mengambil teks respons
 
         // Tampilkan data di dalam elemen hasil
