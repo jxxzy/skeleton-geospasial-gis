@@ -3,7 +3,7 @@ import { container } from 'https://jscroot.github.io/element/croot.js';
 
 const attributions = '<a href="https://petapedia.github.io/" target="_blank">&copy; PetaPedia Indonesia</a> ';
 
-const place = [107.58032031133888, -6.878124785406527];
+const place = [115.21695585945717, -8.66027018293012];
 
 const basemap = new ol.layer.Tile({
     source: new ol.source.OSM({

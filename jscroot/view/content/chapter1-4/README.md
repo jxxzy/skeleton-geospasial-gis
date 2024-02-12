@@ -1,3 +1,0 @@
-# GIS MAP
-
-# Bismillah
