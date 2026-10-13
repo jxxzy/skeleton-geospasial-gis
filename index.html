@@ -1,29 +1,117 @@
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>JSCroot Template Skeleton</title>
-    </head>
-    <body>
-        <!--========== HEADER ==========-->
-        <header class="header">
-            <div class="header__container" id="header__container">
-            </div>
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Peta sepuluh rute jalan Cimahi-Bandung menggunakan GeoJSON dan CrootJS.">
+    <title>Rute Cimahi–Bandung | Peta GeoJSON CrootJS</title>
+    <link rel="stylesheet" href="assets/css/map-app.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="./" aria-label="Peta rute Cimahi-Bandung">
+                <span class="brand-mark" aria-hidden="true">GIS</span>
+                <span class="brand-name">Rute<span>Map</span></span>
+            </a>
+            <span class="area-pill"><span class="online-dot" aria-hidden="true"></span> Cimahi · Bandung</span>
         </header>
 
-        <!--========== NAV ==========-->
-        <div class="nav" id="navbar">
-        </div>
+        <main class="workspace">
+            <aside class="trip-panel" aria-labelledby="page-title">
+                <p class="eyebrow">PETA RUTE · JAWA BARAT</p>
+                <h1 id="page-title">Rute jalan Cimahi–Bandung.</h1>
+                <p class="intro">Pilih salah satu dari 10 tujuan dugem di Bandung. Peta menunjukkan polyline jalan dari titik awal acak di kawasan Cimahi–Bandung.</p>
 
-        <!--========== CONTENTS ==========-->
-        <main id="content">
+                <section class="trip-card" aria-label="Pilih rute">
+                    <label class="route-picker" for="route-choice">
+                        <span class="stop-label">PILIH TUJUAN DUGEM · 10 RUTE</span>
+                        <select id="route-choice" name="route" aria-label="Pilih tujuan tempat hiburan malam">
+                            <option value="brotherhood-bunker">The Brotherhood Bunker</option>
+                            <option value="alcatraz-night-club">Alcatraz Night Club</option>
+                            <option value="southbank-noir">Southbank Noir</option>
+                            <option value="tembak-langit-paskal">Tembak Langit Club Paskal</option>
+                            <option value="hw-superhouse">HW Superhouse Bandung</option>
+                            <option value="vender-club">Vender Spa, Karaoke Lounge &amp; Club</option>
+                            <option value="shelter-cafe-bar">Shelter Cafe &amp; Bar</option>
+                            <option value="opiuci">OPIUCI Bar &amp; Chamber of Memoir</option>
+                            <option value="hi-hidden-club">Hi Hidden Club</option>
+                            <option value="f3x-executive-club">F3X Executive Club</option>
+                        </select>
+                    </label>
+                    <button class="random-button" id="random-route" type="button" disabled>Acak titik awal</button>
+                    <p class="random-note">Memilih acak satu dari 10 titik awal GeoJSON; tujuan ikut menyesuaikan.</p>
+                    <div class="stop-row">
+                        <span class="stop-marker stop-marker-start" aria-hidden="true"></span>
+                        <div>
+                            <span class="stop-label">TITIK AWAL ACAK</span>
+                            <strong id="origin-name">Memuat titik awal…</strong>
+                        </div>
+                    </div>
+                    <div class="stop-connector" aria-hidden="true"></div>
+                    <div class="stop-row">
+                        <span class="stop-marker stop-marker-end" aria-hidden="true"></span>
+                        <div>
+                            <span class="stop-label">TUJUAN</span>
+                            <strong id="destination-name">The Brotherhood Bunker</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="estimate" aria-label="Informasi rute" aria-live="polite">
+                    <div class="estimate-heading">
+                        <span>INFORMASI RUTE</span>
+                        <span class="service-tag">GOJEK MOBIL · ESTIMASI</span>
+                    </div>
+                    <div class="estimate-main">
+                        <div>
+                            <span class="metric-label">Jarak jalan</span>
+                            <strong class="metric-value" id="route-distance">Menghitung…</strong>
+                        </div>
+                        <div class="fare-block">
+                            <span class="metric-label">Ongkos simulasi</span>
+                            <strong class="fare-value" id="route-fare">Menghitung…</strong>
+                        </div>
+                    </div>
+                    <div class="duration-row">
+                        <span class="metric-label">Waktu tempuh profil jalan</span>
+                        <strong id="route-duration">Menghitung…</strong>
+                    </div>
+                    <div class="duration-row">
+                        <span class="metric-label">Titik polyline rute ini</span>
+                        <strong id="route-vertices">Menghitung…</strong>
+                    </div>
+                    <p class="fare-caption" id="route-note">Perhitungan estimasi: minimum Rp10.000, lalu Rp2.000/km dibulatkan ke atas per Rp1.000. Bukan harga resmi GoCar.</p>
+                </section>
+
+                <a class="maps-link data-download" href="data/rute-cimahi-bandung.geojson" download>Lihat / unduh file GeoJSON</a>
+                <button class="focus-button" id="focus-route" type="button">Pusatkan rute di peta</button>
+                <button class="overview-button" id="toggle-overview" type="button" aria-pressed="false" disabled>Lihat semua 10 rute</button>
+                <p class="data-status" id="data-status" role="status">Memuat GeoJSON rute jalan…</p>
+
+                <div class="method-note">
+                    <span class="note-icon" aria-hidden="true">i</span>
+                    <p>Waktu tempuh memakai estimasi profil OSRM, bukan lalu lintas real-time. Rute dan ongkos bukan data navigasi atau tarif resmi Gojek.</p>
+                </div>
+            </aside>
+
+            <section class="map-panel" aria-label="Peta rute jalan Cimahi-Bandung">
+                <div id="map" class="map-canvas" role="application" aria-label="Peta interaktif rute jalan. Gunakan mouse atau sentuhan untuk menggeser dan memperbesar."></div>
+                <div class="map-badge" id="route-count">Memuat rute jalan</div>
+                <div class="map-legend" id="map-legend" aria-label="Legenda peta">
+                    <span><i class="legend-route-car" aria-hidden="true"></i> Rute jalan OSRM</span>
+                    <span><i class="legend-origin" aria-hidden="true"></i> Titik awal</span>
+                    <span><i class="legend-destination" aria-hidden="true"></i> Tujuan</span>
+                </div>
+                <div class="map-credit">Data peta © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a></div>
+            </section>
         </main>
 
-        <!--========== jscroot ==========-->
-        <script src="jscroot/index.js" type="module"></script>
-
-        <!--========== openlayer ==========-->
-        <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
-    </body>
+        <footer class="footer">
+            <span>Tugas GIS · Daslan Josua Valentino Siahaan · NIM 1214011</span>
+            <span>Jaringan jalan © OpenStreetMap contributors · Estimasi GoCar, minimum Rp10.000</span>
+        </footer>
+    </div>
+    <script type="module" src="assets/js/map-app.js"></script>
+</body>
 </html>
