@@ -29,6 +29,18 @@ http://localhost:8000
 
 Catatan: jangan membuka file index.html langsung dengan file:// karena aplikasi membaca file GeoJSON melalui HTTP.
 
+## Mengimpor GeoJSON ke MongoDB
+
+Pastikan MongoDB Server aktif dan `mongosh` tersedia. Dari folder utama proyek, jalankan:
+
+```powershell
+mongosh "mongodb://localhost:27017/gis_cimahi" --file .\scripts\mongodb-geospatial.js
+```
+
+Skrip membaca `data/rute-cimahi-bandung.geojson`, menyimpan setiap fitur sebagai satu dokumen dalam koleksi `rute`, lalu membuat indeks `2dsphere` pada field `geometry`. Skrip dapat dijalankan ulang; dokumen rute lama akan diganti. Pastikan MongoDB Server lokal dapat diakses pada port 27017, atau ganti URI sesuai koneksi Anda.
+
+Skrip juga menjalankan empat contoh query: `$near`, `$geoWithin`, `$geoIntersects`, dan tahap agregasi `$geoNear`. Hasil query dicetak di terminal. Ulasan langkah demi langkah dan naskah video tersedia di [TUTORIAL-YOUTUBE.md](TUTORIAL-YOUTUBE.md).
+
 ## Fitur utama
 
 - 10 rute jalan di satu peta
