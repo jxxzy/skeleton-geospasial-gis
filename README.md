@@ -19,9 +19,19 @@ Aplikasi ini dibuat sebagai proyek GIS statis berbasis browser. Data rute disimp
 
 Buka terminal di folder proyek, lalu jalankan:
 
+**Windows:**
+
 ```powershell
 py -m http.server 8000
 ```
+
+**Linux/macOS:**
+
+```bash
+python3 -m http.server 8000
+```
+
+Pastikan Python 3 sudah terpasang. Jika port 8000 sedang digunakan, pilih port lain (misalnya 8001) dan sesuaikan alamat di browser. Gunakan `Ctrl+C` untuk menghentikan server.
 
 Setelah itu buka browser ke:
 
@@ -35,6 +45,12 @@ Pastikan MongoDB Server aktif dan `mongosh` tersedia. Dari folder utama proyek, 
 
 ```powershell
 mongosh "mongodb://localhost:27017/gis_cimahi" --file .\scripts\mongodb-geospatial.js
+```
+
+Pada Linux/macOS, gunakan path skrip `scripts/mongodb-geospatial.js`:
+
+```bash
+mongosh "mongodb://localhost:27017/gis_cimahi" --file scripts/mongodb-geospatial.js
 ```
 
 Skrip membaca `data/rute-cimahi-bandung.geojson`, menyimpan setiap fitur sebagai satu dokumen dalam koleksi `rute`, lalu membuat indeks `2dsphere` pada field `geometry`. Skrip dapat dijalankan ulang; dokumen rute lama akan diganti. Pastikan MongoDB Server lokal dapat diakses pada port 27017, atau ganti URI sesuai koneksi Anda.
@@ -55,4 +71,4 @@ Skrip juga menjalankan empat contoh query: `$near`, `$geoWithin`, `$geoIntersect
 - Data rute bersifat contoh dan estimasi, bukan rute real-time.
 - Ongkos yang ditampilkan adalah simulasi tugas, bukan tarif resmi aplikasi transportasi.
 - Data peta menggunakan OpenStreetMap dan CrootJS.
-- Proyek ini bersifat statis, sehingga tidak memerlukan backend atau database.
+- Aplikasi peta statis tidak memerlukan backend atau database. MongoDB hanya diperlukan untuk latihan impor dan query geospasial pada bagian opsional di atas. CrootJS dan OpenStreetMap dapat memerlukan koneksi internet untuk memuat pustaka dan peta.
